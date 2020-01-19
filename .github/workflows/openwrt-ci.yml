@@ -51,6 +51,8 @@ jobs:
           # ln -s /mnt/openwrt/feeds ./feeds
           # ln -s /mnt/openwrt/staging_dir ./staging_dir
 
+          make dirclean
+          
           df -h
 
       - name: Update feeds
@@ -61,7 +63,7 @@ jobs:
       - name: Generate configuration file
         run: |
           # rm -f ./.config*
-          touch ./.config
+          # touch ./.config
 
           #
           # ========================固件定制部分========================
@@ -190,7 +192,7 @@ jobs:
           # ========================固件定制部分结束========================
           # 
 
-          sed -i 's/^[ \t]*//g' ./.config
+          # sed -i 's/^[ \t]*//g' ./.config
           make defconfig
 
       - name: Make download
